@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <title>TP : Un formulaire interactif</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<form id="myForm">
+
+    <div class="formDiv" id="sexeDiv">
+        <span class="form_col">Sexe :</span>
+        <label><input class="radioSexe" name="sex" type="radio" value="H"/>Homme</label>
+        <label><input class="radioSexe" name="sex" type="radio" value="F"/>Femme</label>
+        <span class="tooltip">Vous devez sélectionnez votre sexe</span>
+    </div>
+
+    <div class="formDiv" id="NomDiv">
+        <label class="form_col" for="lastName">Nom :</label>
+        <input name="lastName" id="lastName" type="text"/>
+        <span class="tooltip">Un nom ne peut pas faire moins de 2 caractères</span>
+    </div>
+
+    <div class="formDiv" id="prenomDiv">
+        <label class="form_col" for="firstName">Prénom :</label>
+        <input name="firstName" id="firstName" type="text"/>
+        <span class="tooltip">Un prénom ne peut pas faire moins de 2 caractères</span>
+    </div>
+
+    <div class="formDiv" id="ageDiv">
+        <label class="form_col" for="age">Âge :</label>
+        <input name="age" id="age" type="text"/>
+        <span class="tooltip">L'âge doit être compris entre 5 et 140</span>
+    </div>
+
+    <div class="formDiv" id="loginDiv">
+        <label class="form_col" for="login">Pseudo :</label>
+        <input name="login" id="login" type="text"/>
+        <span class="tooltip">Le pseudo ne peut pas faire moins de 4 caractères</span>
+    </div>
+
+    <div class="formDiv" id="passwordDiv">
+        <label class="form_col" for="pwd1">Mot de passe :</label>
+        <input name="pwd1" id="pwd1" type="password"/>
+        <span class="tooltip">Le mot de passe ne doit pas faire moins de 6 caractères</span>
+    </div>
+
+    <div class="formDiv" id="password2Div">
+        <label class="form_col" for="pwd2">Mot de passe (confirmation) :</label>
+        <input name="pwd2" id="pwd2" type="password"/>
+        <span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span>
+    </div>
+
+    <div class="formDiv" id="cguDiv">
+        <label class="form_col" for="cgu">Accepter les CGU</label>
+        <input name="cgu" id="cgu" type="checkbox" value="Accepter"/>
+        <span class="tooltip"> Accepter les conditions d'utilisations</span>
+    </div>
+
+    <input type="button" value="Envoyer"/>
+
+</form>
+
+<script src="../js/formulaire.js"></script>
+</body>
+</html>

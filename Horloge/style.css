@@ -1,0 +1,19 @@
+body{
+    margin: auto;
+    width: 500px;
+    background: #dbf1ff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#wake{
+    background: #8ec9ff;
+    padding: 3px;
+}
+
+#heure, #minute{
+    width: 50px;
+}
+
+#message{
+    width: 100px;
+
+}
