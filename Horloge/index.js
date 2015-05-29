@@ -35,7 +35,9 @@ function alarm(heure, minute, message){
         alert(message);
     }
 
-    var timeout = setTimeout(alarm(heure, minute, message), 60000);
+    var timeout = setTimeout(function(){
+        alarm(heure, minute, message);
+    }, 10000);
 }
 
 affiche();
