@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="fr">
     <meta charset="UTF-8">
     <title>Lecture de Podcast audio</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
+    <h1>Podcast viewer 0.1a</h1>
+    <hr>
 
+    <form id="adressForm" method="POST">
+        <label for="url">Entrez l'url du podcast</label>
+        <input id="url" type="text" placeholder="URL"/>
+
+        <label for="submit"></label>
+        <input id="submit" type="button" value="Envoyer">
+    </form>
+    <hr>
+    <script type="text/javascript" src="index.js">
+    </script>
+    <table id="tab">
+        <tr>
+            <th id="lecteur">Lecteur</th>
+            <th id="title">Titre</th>
+            <th id="lien">lien</th>
+            <th id="description">Description</th>
+            <th id="time">Durée</th>
+        </tr>
+    </table>
 </body>
 </html>
