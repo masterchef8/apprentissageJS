@@ -1,5 +1,16 @@
 /**
  * Created by Somebody on 03/06/15.
+ *
+ *
+ * Votre application doit permettre de saisir l’URL d’un podcast,
+ * d’afficher le contenu de ce podcast sous une forme ergonomique,
+ * avec notamment la liste des entrées par ordre chronologique inverse (plus récents en haut),
+ * avec la possibilité de lire (dans la même page) le contenu multimédia d’une entrée (mais pas plusieurs à la fois).
+ * Autant que possible, l’état de l’application doit se réfléter dans l’URL, afin de pouvoir revenir rapidement sur un état mémorisé.
+ * Vous fournirez également une documentation utilisateur minimale, accessible depuis l’application.
+ *
+ * TODO:
+ *
  */
 
 function addElement(tab, i,title,link,desc,pub,guid ) {
