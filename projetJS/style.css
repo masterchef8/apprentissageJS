@@ -1,6 +1,6 @@
 body{
     margin: auto;
-    width: 1000px;
+    width: 800px;
     background: #dbf1ff;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 10px;
@@ -8,7 +8,6 @@ body{
 
 #tab{
     width: 100%;
-    border: solid 1px;
 }
 th#lecture{
     width: 100px;
