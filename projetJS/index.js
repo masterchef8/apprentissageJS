@@ -81,14 +81,31 @@ function recupXML(xhr) {
         addTab("tab", i + 1, title, link, desc, pub, guid);
     }
 }
+function xhrFunc(url){
+    proxy = "http://cors-anywhere.herokuapp.com";
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', proxy + "/" + url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            if (xhr.status === 200) {
+                recupXML(xhr);
+            } else {
+                // Error
+            }
+        }
+    };
+    xhr.send();
+}
 
 
 window.addEventListener("load", function () {
 
     var inputUrl = document.getElementById("url");
     if(location.hash != "" && location.hash != undefined){
-        console.log(location.hash.replace("#",""));
+        var url = location.hash.replace("#","");
         inputUrl.value = location.hash.replace("#","");
+        xhrFunc(url);
     }
 
         document.getElementById("submit")
@@ -100,19 +117,7 @@ window.addEventListener("load", function () {
 
             proxy = "http://cors-anywhere.herokuapp.com";
 
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', proxy + "/" + url, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    console.log(xhr.status);
-                    if (xhr.status === 200) {
-                        recupXML(xhr);
-                    } else {
-                        // Error
-                    }
-                }
-            };
-            xhr.send();
+            xhrFunc(url);
 
         });
 });
