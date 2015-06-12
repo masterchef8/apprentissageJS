@@ -20,9 +20,13 @@
  *
  */
 
+/**
+ * Global
+ */
+currentMedia = "";
 
-function addTab(tab, i, title, link, desc, pub, guid) {
-    /*
+function addTab(tab, i, title, pub, guid) {
+    /**
 
      [Log] C'est mon boulot 14.05.2015
      [Log] http://www.radiofrance.fr/
@@ -31,32 +35,35 @@ function addTab(tab, i, title, link, desc, pub, guid) {
      [Log] http://media.radiofrance-podcast.net/ ...
 
      */
+
     var table = document.getElementById(tab);
     var row = table.insertRow(i);
     var conca = "<audio controls=" + "controls" + " onplay=" + "checkPlay(this);" + " preload=" + "none" + " src=" + guid + "></<audio>";
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
+    var cell5 = row.insertCell(2);
 
     // Add some text to the new cells:
     cell1.innerHTML = conca;
     cell2.innerHTML = title;
-    cell3.innerHTML = link;
-    cell4.innerHTML = desc;
     cell5.innerHTML = pub;
 
 }
 function addHead(channel) {
-    //TODO: addHead
+    var t = channel.getElementsByTagName("title")[0].textContent;
+    var tP = document.getElementById("titrePod");
+    tP.value = t;
+
+    var d = channel.getElementsByTagName("description")[0].textContent;
+    var dC = document.getElementById("descriptionContent");
+    dC.value = d;
 }
 
 function checkPlay(audio) {
-    /*
-     Check si Un element audio est en train de jouer un son.
-     Si oui => pause sinon play.
+    /**
+     * Check si Un element audio est en train de jouer un son.
+     * Si oui => pause sinon play.
      */
     var tagsAudio = document.getElementsByTagName('audio');
     var i = 0;
@@ -69,17 +76,21 @@ function checkPlay(audio) {
     audio.play();
 }
 function recupXML(xhr) {
+
     var root = xhr.responseXML;
-    var channel = root.getElementsByTagName('channel');
-    var item = channel[0].getElementsByTagName('item');
+    var channel = root.getElementsByTagName('channel')[0];
+    var item = channel.getElementsByTagName('item');
+
     for (var i = 0; i < item.length; i++) {
         var title = item[i].getElementsByTagName('title')[0].textContent;
         var link = item[i].getElementsByTagName('link')[0].textContent;
-        var desc = item[i].getElementsByTagName('description')[0].textContent;
         var pub = item[i].getElementsByTagName('pubDate')[0].textContent;
         var guid = item[i].getElementsByTagName('guid')[0].textContent;
-        addTab("tab", i + 1, title, link, desc, pub, guid);
+        addTab("tab", i + 1, title, pub, guid);
     }
+
+    addHead(channel);
+
 }
 function xhrFunc(url){
     proxy = "http://cors-anywhere.herokuapp.com";
@@ -89,7 +100,7 @@ function xhrFunc(url){
         if (xhr.readyState === 4) {
             console.log(xhr.status);
             if (xhr.status === 200) {
-                recupXML(xhr);
+                recupXML(xhr,url);
             } else {
                 // Error
             }
@@ -97,7 +108,6 @@ function xhrFunc(url){
     };
     xhr.send();
 }
-
 
 window.addEventListener("load", function () {
 
@@ -114,7 +124,7 @@ window.addEventListener("load", function () {
             console.log("clicked");
             var url = document.getElementById("url").value.replace("http://", "");
             location.hash = url;
-
+            console.log(url);
             proxy = "http://cors-anywhere.herokuapp.com";
 
             xhrFunc(url);
@@ -122,7 +132,9 @@ window.addEventListener("load", function () {
         });
 });
 
-window.addEventListener('hashchange', function(){
+window.addEventListener("hashchange", function() {
+    console.log("HashChange EventListener");
+
 
 });
 
